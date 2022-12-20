@@ -7,7 +7,7 @@ function RecipeList({ recipes, deleteRecipe }) {
   return (
     <div className="recipe-list">
       <table>
-        <thead>
+        
    
             <th>Name</th>
             <th>Cuisine</th>
@@ -16,7 +16,7 @@ function RecipeList({ recipes, deleteRecipe }) {
             <th>Preparation</th>
             <th>Actions</th>
         
-        </thead>
+        
         <tbody>
     
           {recipes.map((recipe, index) => {
