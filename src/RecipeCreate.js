@@ -21,48 +21,14 @@ function RecipeCreate({ setRecipes, recipes, createNewRecipes }) {
   const submitCreateHandler = (event) => {
     event.preventDefault()
     createNewRecipes(formData)
-    const errors = validateForm(formData);
-    const errorElements = document.querySelectorAll(".error");
-    for (let element of errorElements) {
-      element.style.display = "none";
-    }
-  
-    Object.keys(errors).forEach((key) => {
-      const errorElement = document.querySelector(`#${key}-form .error`);
-      errorElement.innerHTML = errors[key];
-      errorElement.style.display = "block";
-    });
-
     setFormData(initalFormState)
    };
   
-  function validateExists(value){
-    return value && value.trim()
-  }
-
-  function validateForm(formData){
-    const errors = {};
-
-    if (!validateExists(formData.get("name"))){
-      errors.name = "Please enter a name"
-    }
-    if (!validateExists(formData.get("cuisine"))){
-      errors.name = "Please enter a cuisine"
-    }if (!validateExists(formData.get("photo"))){
-      errors.name = "Please enter a photo"
-    }
-    if (!validateExists(formData.get("ingredients"))){
-      errors.name = "Please enter ingredients"
-    }
-    if (!validateExists(formData.get("preparation"))){
-      errors.name = "Please enter a preparation"
-    }
-    return errors;
-  }
+  
   
  
   return (
-    <form name="create">
+    <form name="create" onSubmit={submitCreateHandler}>
       <table>
         <tbody>
           <tr> 
@@ -115,7 +81,7 @@ function RecipeCreate({ setRecipes, recipes, createNewRecipes }) {
               />
             </td>
             <td>
-              <button onClick={submitCreateHandler} type="submit">Create</button>
+              <button type="submit">Create</button>
             </td>
           </tr>
         </tbody>
